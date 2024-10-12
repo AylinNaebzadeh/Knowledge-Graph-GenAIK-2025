@@ -1,0 +1,164 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#FFA500", "id": "neural networks", "label": "neural networks", "shape": "dot", "size": 40, "title": "neural networks"}, {"color": "#FFA500", "id": "computer vision", "label": "computer vision", "shape": "dot", "size": 40, "title": "computer vision"}, {"color": "#FFA500", "id": "natural language processing", "label": "natural language processing", "shape": "dot", "size": 40, "title": "natural language processing"}, {"color": "#6495ED", "id": "Geoffrey Hinton", "label": "Geoffrey Hinton", "shape": "dot", "size": 50, "title": "Geoffrey Hinton"}, {"color": "#6495ED", "id": "John J. Hopfield", "label": "John J. Hopfield", "shape": "dot", "size": 50, "title": "John J. Hopfield"}, {"color": "red", "id": "Chicago", "label": "Chicago", "shape": "dot", "size": 10, "title": "Chicago"}, {"color": "#8A2BE2", "id": "California Institute of Technology (Caltech)", "label": "California Institute of Technology (Caltech)", "shape": "dot", "size": 30, "title": "California Institute of Technology (Caltech)"}, {"color": "#8A2BE2", "id": "Princeton University", "label": "Princeton University", "shape": "dot", "size": 30, "title": "Princeton University"}, {"color": "#8A2BE2", "id": "AT\u0026T Bell Laboratories", "label": "AT\u0026T Bell Laboratories", "shape": "dot", "size": 30, "title": "AT\u0026T Bell Laboratories"}, {"color": "#FFA500", "id": "Hopfield network", "label": "Hopfield network", "shape": "dot", "size": 40, "title": "Hopfield network"}, {"color": "#F4A460", "id": "Nobel Prize in Physics", "label": "Nobel Prize in Physics", "shape": "dot", "size": 20, "title": "Nobel Prize in Physics"}, {"color": "#ADFF2F", "id": "July 15, 1933", "label": "July 15, 1933", "shape": "dot", "size": 10, "title": "July 15, 1933"}, {"color": "#FFD700", "id": "American", "label": "American", "shape": "dot", "size": 25, "title": "American"}, {"color": "#8A2BE2", "id": "Swarthmore College", "label": "Swarthmore College", "shape": "dot", "size": 30, "title": "Swarthmore College"}, {"color": "#FF6347", "id": "bachelor\u2019s degree", "label": "bachelor\u2019s degree", "shape": "dot", "size": 25, "title": "bachelor\u2019s degree"}, {"color": "#FF6347", "id": "Ph.D", "label": "Ph.D", "shape": "dot", "size": 25, "title": "Ph.D"}, {"color": "red", "id": "London", "label": "London", "shape": "dot", "size": 10, "title": "London"}, {"color": "#8A2BE2", "id": "University College London", "label": "University College London", "shape": "dot", "size": 30, "title": "University College London"}, {"color": "#8A2BE2", "id": "Carnegie Mellon University", "label": "Carnegie Mellon University", "shape": "dot", "size": 30, "title": "Carnegie Mellon University"}, {"color": "#8A2BE2", "id": "University of Toronto", "label": "University of Toronto", "shape": "dot", "size": 30, "title": "University of Toronto"}, {"color": "#8A2BE2", "id": "Vector Institute", "label": "Vector Institute", "shape": "dot", "size": 30, "title": "Vector Institute"}, {"color": "#8A2BE2", "id": "Google Brain", "label": "Google Brain", "shape": "dot", "size": 30, "title": "Google Brain"}, {"color": "#8A2BE2", "id": "University of California, San Diego", "label": "University of California, San Diego", "shape": "dot", "size": 30, "title": "University of California, San Diego"}, {"color": "#FF4500", "id": "pursuit of knowledge and innovation", "label": "pursuit of knowledge and innovation", "shape": "dot", "size": 15, "title": "pursuit of knowledge and innovation"}, {"color": "#FF4500", "id": "advisory roles", "label": "advisory roles", "shape": "dot", "size": 15, "title": "advisory roles"}, {"color": "#FF4500", "id": "research", "label": "research", "shape": "dot", "size": 15, "title": "research"}, {"color": "#FF4500", "id": "cognitive psychologist and computer scientist", "label": "cognitive psychologist and computer scientist", "shape": "dot", "size": 15, "title": "cognitive psychologist and computer scientist"}, {"color": "#FF4500", "id": "advisory role", "label": "advisory role", "shape": "dot", "size": 15, "title": "advisory role"}, {"color": "#6495ED", "id": "Ronald J. Williams", "label": "Ronald J. Williams", "shape": "dot", "size": 50, "title": "Ronald J. Williams"}, {"color": "#6495ED", "id": "David Rumelhart", "label": "David Rumelhart", "shape": "dot", "size": 50, "title": "David Rumelhart"}, {"color": "#FFA500", "id": "mixtures of experts", "label": "mixtures of experts", "shape": "dot", "size": 40, "title": "mixtures of experts"}, {"color": "#FFA500", "id": "distributed representations", "label": "distributed representations", "shape": "dot", "size": 40, "title": "distributed representations"}, {"color": "#FFA500", "id": "time delay neural networks", "label": "time delay neural networks", "shape": "dot", "size": 40, "title": "time delay neural networks"}, {"color": "#FFA500", "id": "AI applications", "label": "AI applications", "shape": "dot", "size": 40, "title": "AI applications"}, {"color": "#FFA500", "id": "the product of experts", "label": "the product of experts", "shape": "dot", "size": 40, "title": "the product of experts"}, {"color": "#FFA500", "id": "Helmholtz machines", "label": "Helmholtz machines", "shape": "dot", "size": 40, "title": "Helmholtz machines"}, {"color": "#FFA500", "id": "Boltzmann machine", "label": "Boltzmann machine", "shape": "dot", "size": 40, "title": "Boltzmann machine"}, {"color": "#6495ED", "id": "Richard Zemel", "label": "Richard Zemel", "shape": "dot", "size": 50, "title": "Richard Zemel"}, {"color": "#6495ED", "id": "Alex Krizhevsky", "label": "Alex Krizhevsky", "shape": "dot", "size": 50, "title": "Alex Krizhevsky"}, {"color": "#6495ED", "id": "Yann LeCun", "label": "Yann LeCun", "shape": "dot", "size": 50, "title": "Yann LeCun"}, {"color": "#6495ED", "id": "Brendan Frey", "label": "Brendan Frey", "shape": "dot", "size": 50, "title": "Brendan Frey"}, {"color": "#6495ED", "id": "Yoshua Bengio", "label": "Yoshua Bengio", "shape": "dot", "size": 50, "title": "Yoshua Bengio"}, {"color": "#6495ED", "id": "Ruslan Salakhutdinov", "label": "Ruslan Salakhutdinov", "shape": "dot", "size": 50, "title": "Ruslan Salakhutdinov"}, {"color": "#F4A460", "id": "Turing Award", "label": "Turing Award", "shape": "dot", "size": 20, "title": "Turing Award"}, {"color": "#F4A460", "id": "Rumelhart Prize", "label": "Rumelhart Prize", "shape": "dot", "size": 20, "title": "Rumelhart Prize"}, {"color": "#F4A460", "id": "Princess of Asturias Award", "label": "Princess of Asturias Award", "shape": "dot", "size": 20, "title": "Princess of Asturias Award"}, {"color": "#F4A460", "id": "IEEE Frank Rosenblatt Award", "label": "IEEE Frank Rosenblatt Award", "shape": "dot", "size": 20, "title": "IEEE Frank Rosenblatt Award"}, {"color": "#ADFF2F", "id": "December 6, 1947", "label": "December 6, 1947", "shape": "dot", "size": 10, "title": "December 6, 1947"}, {"color": "#FFD700", "id": "British-Canadian", "label": "British-Canadian", "shape": "dot", "size": 25, "title": "British-Canadian"}, {"color": "#6495ED", "id": "Ilya Sutskever", "label": "Ilya Sutskever", "shape": "dot", "size": 50, "title": "Ilya Sutskever"}, {"color": "#8A2BE2", "id": "University of Cambridge", "label": "University of Cambridge", "shape": "dot", "size": 30, "title": "University of Cambridge"}, {"color": "#FF6347", "id": "experimental psychology", "label": "experimental psychology", "shape": "dot", "size": 25, "title": "experimental psychology"}, {"color": "#8A2BE2", "id": "field of artificial intelligence", "label": "field of artificial intelligence", "shape": "dot", "size": 30, "title": "field of artificial intelligence"}, {"color": "#8A2BE2", "id": "Stanford University", "label": "Stanford University", "shape": "dot", "size": 30, "title": "Stanford University"}, {"color": "#6495ED", "id": "Mary Everest Boole", "label": "Mary Everest Boole", "shape": "dot", "size": 50, "title": "Mary Everest Boole"}, {"color": "#6495ED", "id": "George Boole", "label": "George Boole", "shape": "dot", "size": 50, "title": "George Boole"}, {"color": "#DC143C", "id": "responsible AI practices", "label": "responsible AI practices", "shape": "dot", "size": 20, "title": "responsible AI practices"}, {"color": "#DC143C", "id": "ethical implications of advanced technologies", "label": "ethical implications of advanced technologies", "shape": "dot", "size": 20, "title": "ethical implications of advanced technologies"}, {"color": "#FFA500", "id": "algebra of logic", "label": "algebra of logic", "shape": "dot", "size": 40, "title": "algebra of logic"}, {"color": "red", "id": "Nizhny Novgorod", "label": "Nizhny Novgorod", "shape": "dot", "size": 10, "title": "Nizhny Novgorod"}, {"color": "#8A2BE2", "id": "OpenAI", "label": "OpenAI", "shape": "dot", "size": 30, "title": "OpenAI"}, {"color": "#FF4500", "id": "Chief Scientist", "label": "Chief Scientist", "shape": "dot", "size": 15, "title": "Chief Scientist"}, {"color": "#FFA500", "id": "GPT-3", "label": "GPT-3", "shape": "dot", "size": 40, "title": "GPT-3"}, {"color": "#FFA500", "id": "GPT-4", "label": "GPT-4", "shape": "dot", "size": 40, "title": "GPT-4"}, {"color": "#ADFF2F", "id": "December 8, 1986", "label": "December 8, 1986", "shape": "dot", "size": 10, "title": "December 8, 1986"}, {"color": "#FFD700", "id": "Canadian-Israeli-Russian", "label": "Canadian-Israeli-Russian", "shape": "dot", "size": 25, "title": "Canadian-Israeli-Russian"}, {"color": "#FFA500", "id": "AlexNet", "label": "AlexNet", "shape": "dot", "size": 40, "title": "AlexNet"}, {"color": "#6495ED", "id": "Howard Everest Hinton", "label": "Howard Everest Hinton", "shape": "dot", "size": 50, "title": "Howard Everest Hinton"}, {"color": "#00BFFF", "id": "father", "label": "father", "shape": "dot", "size": 15, "title": "father"}, {"color": "#FF4500", "id": "entomologist", "label": "entomologist", "shape": "dot", "size": 15, "title": "entomologist"}, {"color": "#FFA500", "id": "backpropagation algorithm", "label": "backpropagation algorithm", "shape": "dot", "size": 40, "title": "backpropagation algorithm"}, {"color": "#DC143C", "id": "large language models like ChatGPT", "label": "large language models like ChatGPT", "shape": "dot", "size": 20, "title": "large language models like ChatGPT"}, {"color": "#DC143C", "id": "self-driving cars", "label": "self-driving cars", "shape": "dot", "size": 20, "title": "self-driving cars"}, {"color": "red", "id": "Soisy-sous-Montmorency", "label": "Soisy-sous-Montmorency", "shape": "dot", "size": 10, "title": "Soisy-sous-Montmorency"}, {"color": "#8A2BE2", "id": "Courant Institute of Mathematical Sciences at New York University", "label": "Courant Institute of Mathematical Sciences at New York University", "shape": "dot", "size": 30, "title": "Courant Institute of Mathematical Sciences at New York University"}, {"color": "#8A2BE2", "id": "Meta (formerly Facebook)", "label": "Meta (formerly Facebook)", "shape": "dot", "size": 30, "title": "Meta (formerly Facebook)"}, {"color": "#FF4500", "id": "key figure in deep learning", "label": "key figure in deep learning", "shape": "dot", "size": 15, "title": "key figure in deep learning"}, {"color": "#FF4500", "id": "computer scientist", "label": "computer scientist", "shape": "dot", "size": 15, "title": "computer scientist"}, {"color": "#FFA500", "id": "DjVu image compression technology", "label": "DjVu image compression technology", "shape": "dot", "size": 40, "title": "DjVu image compression technology"}, {"color": "#ADFF2F", "id": "July 8, 1960", "label": "July 8, 1960", "shape": "dot", "size": 10, "title": "July 8, 1960"}, {"color": "#FFD700", "id": "French-American", "label": "French-American", "shape": "dot", "size": 25, "title": "French-American"}, {"color": "#FFA500", "id": "convolutional neural networks (CNNs)", "label": "convolutional neural networks (CNNs)", "shape": "dot", "size": 40, "title": "convolutional neural networks (CNNs)"}, {"color": "#8A2BE2", "id": "University of Edinburgh", "label": "University of Edinburgh", "shape": "dot", "size": 30, "title": "University of Edinburgh"}, {"color": "#FF6347", "id": "AI", "label": "AI", "shape": "dot", "size": 25, "title": "AI"}]);
+                  edges = new vis.DataSet([{"from": "neural networks", "title": "developed", "to": "computer vision", "width": 4}, {"from": "neural networks", "title": "developed", "to": "natural language processing", "width": 4}, {"from": "neural networks", "title": "developed", "to": "Geoffrey Hinton", "width": 4}, {"from": "John J. Hopfield", "title": "bornIn", "to": "Chicago", "width": 4}, {"from": "John J. Hopfield", "title": "worksAt", "to": "California Institute of Technology (Caltech)", "width": 4}, {"from": "John J. Hopfield", "title": "worksAt", "to": "Princeton University", "width": 4}, {"from": "John J. Hopfield", "title": "worksAt", "to": "AT\u0026T Bell Laboratories", "width": 4}, {"from": "John J. Hopfield", "title": "developed", "to": "Hopfield network", "width": 4}, {"from": "John J. Hopfield", "title": "collaboratedWith", "to": "Geoffrey Hinton", "width": 4}, {"from": "John J. Hopfield", "title": "hasAward", "to": "Nobel Prize in Physics", "width": 4}, {"from": "John J. Hopfield", "title": "bornAt", "to": "July 15, 1933", "width": 4}, {"from": "John J. Hopfield", "title": "hasNationality", "to": "American", "width": 4}, {"from": "John J. Hopfield", "title": "earnedDegreeFrom", "to": "Swarthmore College", "width": 4}, {"from": "John J. Hopfield", "title": "earnedDegree", "to": "bachelor\u2019s degree", "width": 4}, {"from": "John J. Hopfield", "title": "earnedDegree", "to": "Ph.D", "width": 4}, {"from": "Geoffrey Hinton", "title": "bornIn", "to": "London", "width": 4}, {"from": "Geoffrey Hinton", "title": "worksAt", "to": "University College London", "width": 4}, {"from": "Geoffrey Hinton", "title": "worksAt", "to": "Carnegie Mellon University", "width": 4}, {"from": "Geoffrey Hinton", "title": "worksAt", "to": "University of Toronto", "width": 4}, {"from": "Geoffrey Hinton", "title": "coFounded", "to": "Vector Institute", "width": 4}, {"from": "Geoffrey Hinton", "title": "workedWith", "to": "Google Brain", "width": 4}, {"from": "Geoffrey Hinton", "title": "worksAt", "to": "University of California, San Diego", "width": 4}, {"from": "Geoffrey Hinton", "title": "hasRole", "to": "pursuit of knowledge and innovation", "width": 4}, {"from": "Geoffrey Hinton", "title": "hasRole", "to": "advisory roles", "width": 4}, {"from": "Geoffrey Hinton", "title": "hasRole", "to": "research", "width": 4}, {"from": "Geoffrey Hinton", "title": "hasRole", "to": "cognitive psychologist and computer scientist", "width": 4}, {"from": "Geoffrey Hinton", "title": "hasRole", "to": "advisory role", "width": 4}, {"from": "Geoffrey Hinton", "title": "coAuthored", "to": "Ronald J. Williams", "width": 4}, {"from": "Geoffrey Hinton", "title": "coAuthored", "to": "David Rumelhart", "width": 4}, {"from": "Geoffrey Hinton", "title": "developed", "to": "mixtures of experts", "width": 4}, {"from": "Geoffrey Hinton", "title": "developed", "to": "distributed representations", "width": 4}, {"from": "Geoffrey Hinton", "title": "developed", "to": "time delay neural networks", "width": 4}, {"from": "Geoffrey Hinton", "title": "developed", "to": "AI applications", "width": 4}, {"from": "Geoffrey Hinton", "title": "developed", "to": "the product of experts", "width": 4}, {"from": "Geoffrey Hinton", "title": "developed", "to": "Helmholtz machines", "width": 4}, {"from": "Geoffrey Hinton", "title": "invented", "to": "Boltzmann machine", "width": 4}, {"from": "Geoffrey Hinton", "title": "collaboratedWith", "to": "Richard Zemel", "width": 4}, {"from": "Geoffrey Hinton", "title": "collaboratedWith", "to": "Alex Krizhevsky", "width": 4}, {"from": "Geoffrey Hinton", "title": "coAuthored", "to": "Yann LeCun", "width": 4}, {"from": "Geoffrey Hinton", "title": "collaboratedWith", "to": "Brendan Frey", "width": 4}, {"from": "Geoffrey Hinton", "title": "collaboratedWith", "to": "Yoshua Bengio", "width": 4}, {"from": "Geoffrey Hinton", "title": "collaboratedWith", "to": "Ruslan Salakhutdinov", "width": 4}, {"from": "Geoffrey Hinton", "title": "hasAward", "to": "Nobel Prize in Physics", "width": 4}, {"from": "Geoffrey Hinton", "title": "hasAward", "to": "Turing Award", "width": 4}, {"from": "Geoffrey Hinton", "title": "hasAward", "to": "Rumelhart Prize", "width": 4}, {"from": "Geoffrey Hinton", "title": "hasAward", "to": "Princess of Asturias Award", "width": 4}, {"from": "Geoffrey Hinton", "title": "hasAward", "to": "IEEE Frank Rosenblatt Award", "width": 4}, {"from": "Geoffrey Hinton", "title": "bornAt", "to": "December 6, 1947", "width": 4}, {"from": "Geoffrey Hinton", "title": "hasNationality", "to": "British-Canadian", "width": 4}, {"from": "Geoffrey Hinton", "title": "hasStudent", "to": "Ilya Sutskever", "width": 4}, {"from": "Geoffrey Hinton", "title": "earnedDegreeFrom", "to": "University of Cambridge", "width": 4}, {"from": "Geoffrey Hinton", "title": "earnedDegree", "to": "experimental psychology", "width": 4}, {"from": "Geoffrey Hinton", "title": "earnedDegree", "to": "Ph.D", "width": 4}, {"from": "Geoffrey Hinton", "title": "workedWith", "to": "field of artificial intelligence", "width": 4}, {"from": "Geoffrey Hinton", "title": "workedWith", "to": "Stanford University", "width": 4}, {"from": "Geoffrey Hinton", "title": "hasRelation", "to": "Mary Everest Boole", "width": 4}, {"from": "Geoffrey Hinton", "title": "hasRelation", "to": "George Boole", "width": 4}, {"from": "Geoffrey Hinton", "title": "advocates", "to": "responsible AI practices", "width": 4}, {"from": "Geoffrey Hinton", "title": "advocates", "to": "ethical implications of advanced technologies", "width": 4}, {"from": "Ph.D", "title": "earnedDegree", "to": "Ilya Sutskever", "width": 4}, {"from": "George Boole", "title": "developed", "to": "algebra of logic", "width": 4}, {"from": "Ilya Sutskever", "title": "bornIn", "to": "Nizhny Novgorod", "width": 4}, {"from": "Ilya Sutskever", "title": "coFounded", "to": "OpenAI", "width": 4}, {"from": "Ilya Sutskever", "title": "hasRole", "to": "Chief Scientist", "width": 4}, {"from": "Ilya Sutskever", "title": "developed", "to": "GPT-3", "width": 4}, {"from": "Ilya Sutskever", "title": "developed", "to": "GPT-4", "width": 4}, {"from": "Ilya Sutskever", "title": "bornAt", "to": "December 8, 1986", "width": 4}, {"from": "Ilya Sutskever", "title": "hasNationality", "to": "Canadian-Israeli-Russian", "width": 4}, {"from": "Ilya Sutskever", "title": "coInventing", "to": "AlexNet", "width": 4}, {"from": "Howard Everest Hinton", "title": "is", "to": "father", "width": 4}, {"from": "Howard Everest Hinton", "title": "was", "to": "entomologist", "width": 4}, {"from": "Ronald J. Williams", "title": "invented", "to": "backpropagation algorithm", "width": 4}, {"from": "AI applications", "title": "characteristics", "to": "large language models like ChatGPT", "width": 4}, {"from": "AI applications", "title": "characteristics", "to": "self-driving cars", "width": 4}, {"from": "Yann LeCun", "title": "bornIn", "to": "Soisy-sous-Montmorency", "width": 4}, {"from": "Yann LeCun", "title": "worksAt", "to": "Courant Institute of Mathematical Sciences at New York University", "width": 4}, {"from": "Yann LeCun", "title": "worksAt", "to": "Meta (formerly Facebook)", "width": 4}, {"from": "Yann LeCun", "title": "hasRole", "to": "key figure in deep learning", "width": 4}, {"from": "Yann LeCun", "title": "hasRole", "to": "computer scientist", "width": 4}, {"from": "Yann LeCun", "title": "coAuthored", "to": "Yoshua Bengio", "width": 4}, {"from": "Yann LeCun", "title": "developed", "to": "DjVu image compression technology", "width": 4}, {"from": "Yann LeCun", "title": "hasAward", "to": "Turing Award", "width": 4}, {"from": "Yann LeCun", "title": "bornAt", "to": "July 8, 1960", "width": 4}, {"from": "Yann LeCun", "title": "hasNationality", "to": "French-American", "width": 4}, {"from": "Yann LeCun", "title": "workedWith", "to": "convolutional neural networks (CNNs)", "width": 4}, {"from": "University of Edinburgh", "title": "earnedDegreeFrom", "to": "AI", "width": 4}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "forceAtlas2Based": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.015,
+            "damping": 0.4,
+            "gravitationalConstant": -31,
+            "springConstant": 0.08,
+            "springLength": 100
+        },
+        "solver": "forceAtlas2Based",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

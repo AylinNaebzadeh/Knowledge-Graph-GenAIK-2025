@@ -1,0 +1,94 @@
+,head,head_type,relation,tail,tail_type
+0,neural networks,invention,developed,computer vision,invention
+1,neural networks,invention,developed,natural language processing,invention
+2,John J. Hopfield,person,bornIn,Chicago,birthPlace
+3,John J. Hopfield,person,worksAt,California Institute of Technology (Caltech),institution
+4,John J. Hopfield,person,worksAt,Princeton University,institution
+5,John J. Hopfield,person,worksAt,AT&T Bell Laboratories,institution
+6,John J. Hopfield,person,developed,Hopfield network,invention
+7,John J. Hopfield,person,collaboratedWith,Geoffrey Hinton,person
+8,John J. Hopfield,person,hasAward,Nobel Prize in Physics,award
+9,John J. Hopfield,person,bornAt,"July 15, 1933",date
+10,John J. Hopfield,person,hasNationality,American,nationality
+11,John J. Hopfield,person,earnedDegreeFrom,Swarthmore College,institution
+12,John J. Hopfield,person,earnedDegree,bachelor’s degree,degree
+13,John J. Hopfield,person,earnedDegree,Ph.D,degree
+14,George Boole,person,developed,algebra of logic,invention
+15,Ilya Sutskever,person,bornIn,Nizhny Novgorod,birthPlace
+16,Ilya Sutskever,person,worksAt,OpenAI,institution
+17,Ilya Sutskever,person,hasRole,Chief Scientist,role
+18,Ilya Sutskever,person,developed,GPT-3,invention
+19,Ilya Sutskever,person,developed,GPT-4,invention
+20,Ilya Sutskever,person,coFounded,OpenAI,institution
+21,Ilya Sutskever,person,bornAt,"December 8, 1986",date
+22,Ilya Sutskever,person,hasNationality,Canadian-Israeli-Russian,nationality
+23,Ilya Sutskever,person,earnedDegree,Ph.D,degree
+24,Ilya Sutskever,person,coInventing,AlexNet,invention
+25,Howard Everest Hinton,person,is,father,relation
+26,Howard Everest Hinton,person,was,entomologist,role
+27,Ronald J. Williams,person,invented,backpropagation algorithm,invention
+28,Geoffrey Hinton,person,bornIn,London,birthPlace
+29,Geoffrey Hinton,person,worksAt,University College London,institution
+30,Geoffrey Hinton,person,worksAt,Carnegie Mellon University,institution
+31,Geoffrey Hinton,person,worksAt,University of Toronto,institution
+32,Geoffrey Hinton,person,worksAt,Vector Institute,institution
+33,Geoffrey Hinton,person,worksAt,Google Brain,institution
+34,Geoffrey Hinton,person,worksAt,"University of California, San Diego",institution
+35,Geoffrey Hinton,person,hasRole,pursuit of knowledge and innovation,role
+36,Geoffrey Hinton,person,hasRole,advisory roles,role
+37,Geoffrey Hinton,person,hasRole,research,role
+38,Geoffrey Hinton,person,hasRole,cognitive psychologist and computer scientist,role
+39,Geoffrey Hinton,person,hasRole,advisory role,role
+40,Geoffrey Hinton,person,coAuthored,Ronald J. Williams,person
+41,Geoffrey Hinton,person,coAuthored,David Rumelhart,person
+42,Geoffrey Hinton,person,developed,mixtures of experts,invention
+43,Geoffrey Hinton,person,developed,neural networks,invention
+44,Geoffrey Hinton,person,developed,distributed representations,invention
+45,Geoffrey Hinton,person,developed,time delay neural networks,invention
+46,Geoffrey Hinton,person,developed,AI applications,invention
+47,Geoffrey Hinton,person,developed,the product of experts,invention
+48,Geoffrey Hinton,person,developed,Helmholtz machines,invention
+49,Geoffrey Hinton,person,invented,Boltzmann machine,invention
+50,Geoffrey Hinton,person,collaboratedWith,Richard Zemel,person
+51,Geoffrey Hinton,person,collaboratedWith,John J. Hopfield,person
+52,Geoffrey Hinton,person,collaboratedWith,Vector Institute,institution
+53,Geoffrey Hinton,person,collaboratedWith,Alex Krizhevsky,person
+54,Geoffrey Hinton,person,collaboratedWith,Yann LeCun,person
+55,Geoffrey Hinton,person,collaboratedWith,Brendan Frey,person
+56,Geoffrey Hinton,person,collaboratedWith,Yoshua Bengio,person
+57,Geoffrey Hinton,person,collaboratedWith,Ruslan Salakhutdinov,person
+58,Geoffrey Hinton,person,coFounded,Vector Institute,institution
+59,Geoffrey Hinton,person,hasAward,Nobel Prize in Physics,award
+60,Geoffrey Hinton,person,hasAward,Turing Award,award
+61,Geoffrey Hinton,person,hasAward,Rumelhart Prize,award
+62,Geoffrey Hinton,person,hasAward,Princess of Asturias Award,award
+63,Geoffrey Hinton,person,hasAward,IEEE Frank Rosenblatt Award,award
+64,Geoffrey Hinton,person,bornAt,"December 6, 1947",date
+65,Geoffrey Hinton,person,hasNationality,British-Canadian,nationality
+66,Geoffrey Hinton,person,hasStudent,Ilya Sutskever,person
+67,Geoffrey Hinton,person,hasStudent,Yann LeCun,person
+68,Geoffrey Hinton,person,earnedDegreeFrom,University of Cambridge,institution
+69,Geoffrey Hinton,person,earnedDegree,experimental psychology,degree
+70,Geoffrey Hinton,person,earnedDegree,Ph.D,degree
+71,Geoffrey Hinton,person,workedWith,field of artificial intelligence,institution
+72,Geoffrey Hinton,person,workedWith,Google Brain,institution
+73,Geoffrey Hinton,person,workedWith,Stanford University,institution
+74,Geoffrey Hinton,person,hasRelation,Mary Everest Boole,person
+75,Geoffrey Hinton,person,hasRelation,George Boole,person
+76,Geoffrey Hinton,person,advocates,responsible AI practices,characteristics
+77,Geoffrey Hinton,person,advocates,ethical implications of advanced technologies,characteristics
+78,Yann LeCun,person,bornIn,Soisy-sous-Montmorency,birthPlace
+79,Yann LeCun,person,worksAt,Courant Institute of Mathematical Sciences at New York University,institution
+80,Yann LeCun,person,worksAt,Meta (formerly Facebook),institution
+81,Yann LeCun,person,hasRole,key figure in deep learning,role
+82,Yann LeCun,person,hasRole,computer scientist,role
+83,Yann LeCun,person,coAuthored,Geoffrey Hinton,person
+84,Yann LeCun,person,coAuthored,Yoshua Bengio,person
+85,Yann LeCun,person,developed,DjVu image compression technology,invention
+86,Yann LeCun,person,hasAward,Turing Award,award
+87,Yann LeCun,person,bornAt,"July 8, 1960",date
+88,Yann LeCun,person,hasNationality,French-American,nationality
+89,Yann LeCun,person,workedWith,convolutional neural networks (CNNs),invention
+90,University of Edinburgh,institution,earnedDegreeFrom,AI,degree
+91,AI applications,invention,characteristics,large language models like ChatGPT,characteristics
+92,AI applications,invention,characteristics,self-driving cars,characteristics
