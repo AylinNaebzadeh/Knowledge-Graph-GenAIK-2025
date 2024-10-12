@@ -3,3 +3,4 @@ In this repo, we construct knowledge graphs in a specific domain using a combina
 
 ## Sources:
 - https://github.com/mallahyari/twosetai/blob/main/02_kg_construction.ipynb
+- https://github.com/projectwilsen/KnowledgeGraphLLM 
