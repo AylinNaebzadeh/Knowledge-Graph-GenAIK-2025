@@ -1,4 +1,4 @@
-# 🌌 Knowledge-Graph-GenAIK
+# 🌌 Exploiting Geoffrey Hinton's Knowledge Graph
 - ## Knowledge Graph Construction
   ### TODO
 - ## HybridRAG Development
