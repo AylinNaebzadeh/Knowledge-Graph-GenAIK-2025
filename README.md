@@ -17,6 +17,10 @@ To ensure the knowledge graph focuses on the most impactful elements of Hinton‚Ä
 - Individuals who closely collaborated with Hinton  
 - Key inventions and research milestones related to his work  
 
+<p align="center">
+  <img src="assets/word_cloud.png" width="500"/>
+</p>
+
 ---
 
 ## Data Segmentation
@@ -54,6 +58,10 @@ The extracted entities and relationships were restricted to predefined categorie
 - `coAuthored`
 - `worksAt`
 - `hasAward`
+
+<p align="center">
+  <img src="assets/graph_construction_pipeline.png" width="700"/>
+</p>
 
 ---
 
@@ -94,6 +102,10 @@ This prompt is passed to a generative model that produces the final response. Th
 - **Generative language modeling**
 
 For the final generation step, I use the **Llama3-70b-8192** model to produce answers based on the retrieved information.
+
+<p align="center">
+  <img src="assets/hybrid_rag_development_pipeline.png" width="700"/>
+</p>
 
 ## üìù Sources:
 - https://github.com/mallahyari/twosetai/blob/main/02_kg_construction.ipynb
